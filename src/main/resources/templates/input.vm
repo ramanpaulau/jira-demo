@@ -1,0 +1,34 @@
+#if(${action.issueObject})
+<form action="MyActionClass.jspa" class="aui" id="comment-action" method="post">
+   <div class="form-body">
+        <div class="hidden">
+            <input name="atl_token" type="hidden" value="${action.xsrfToken}">
+        </div>
+        <h2 class="dialog-title">Add Comment</h2>
+        <div class="hidden">
+            <input name="id" type="hidden" value="${action.id}">
+            <input name="returnUrl" type="hidden" value="${action.returnUrl}">
+        </div>
+        <fieldset>
+            <div><span id="issue-comment-text">Comment:</span></div>
+            <textarea name="comment" id="issue-comment-area" value="${action.comment}"></textarea>
+        </fieldset>
+    </div>
+
+    <div class="buttons-container form-footer">
+        <div class="buttons">
+            <input accesskey="s" class="aui-button" id="add-comment-submit" name="Save" title="Press Ctrl+Alt+s to save this comment" type="submit" value="Save">
+            <a accesskey="`" class="aui-button" href="/jira/browse/${action.issue.key}" id="add-comment-cancel" title="Press Ctrl+Alt+` to cancel">Cancel</a>
+        </div>
+    </div>
+</form>
+#else
+<div class="remove-me">
+    <h1>${action.getText('common.words.error')}</h1>
+    <div class="aui-message error"><span class="aui-icon icon-error"></span>
+        #foreach($message in $action.flushedErrorMessages)
+            <p>$message</p>
+        #end
+    </div>
+</div>
+#end

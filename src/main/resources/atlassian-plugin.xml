@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>
+
+  <resource type="i18n" name="i18n" location="moro"/>
+
+  <web-resource key="moro-resources" name="moro Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="moro.js" location="/js/moro.js"/>
+    <context>atl.general</context>
+  </web-resource>
+
+  <web-item name="MyComment" i18n-name-key="my-comment.name" key="my-comment" section="operations-top-level" weight="3"> 
+    <description key="my-comment.description">The MyComment Plugin</description>  
+    <label key="my-comment.label"/>  
+    <link linkId="my-comment-link">/secure/MyActionClass!default.jspa?id=${issue.id}</link>  
+    <styleClass>comment-action</styleClass> 
+  </web-item>
+
+  <web-resource name="MyCommentDialog" i18n-name-key="my-comment-dialog.name" key="my-comment-dialog"> 
+    <description key="my-comment-dialog.description">The MyCommentDialog Plugin</description>  
+    <resource name="dialog.js" type="download" location="js/dialog.js"> 
+      <param name="content-type" value="text/javascript"/> 
+    </resource>
+    <context>atl.general</context>
+  </web-resource>
+
+  <webwork1 key="my-webwork-module" name="My Webwork Module" i18n-name-key="my-webwork-module.name"> 
+    <description key="my-webwork-module.description">The My Webwork Module Plugin</description>  
+    <actions> 
+      <action name="com.atlassian.raman.jira.webwork.MyActionClass" alias="MyActionClass"> 
+        <view name="input">/templates/input.vm</view>  
+        <view name="error">/templates/input.vm</view> 
+      </action> 
+    </actions> 
+  </webwork1>
+
+  <rest name="My Rest Resource" i18n-name-key="my-rest-resource.name" key="my-rest-resource" path="/myrestresource" version="1.0"> 
+    <description key="my-rest-resource.description">The My Rest Resource Plugin</description> 
+  </rest>
+
+  <web-panel name="Project List" i18n-name-key="project-list.name" key="project-list" location="atl.jira.view.issue.right.context" weight="1000"> 
+    <description key="project-list.description">The Project List Plugin</description>  
+    <resource name="view" type="velocity" location="templates/project-list.vm"/> 
+  </web-panel>
+</atlassian-plugin>

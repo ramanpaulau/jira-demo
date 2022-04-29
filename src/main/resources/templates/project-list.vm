@@ -1,0 +1,14 @@
+<div class="project-list">
+<table class="hidden aui">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Key</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <script>loadProjects();</script>
+</table>
+<aui-spinner size="small"></aui-spinner>
+</div>
